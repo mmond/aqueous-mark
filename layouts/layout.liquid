@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+{% head %}
+<title>{{ site.title }} - {% if article %} {{ article.title }} {% else %} {{ site.subtitle }}  {% endif %}</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+{{ '1' | stylesheet }}
+{{ head.feed }}
+{% endhead %}
+<body>
+
+<div id="wrapper">
+<div id="innerwrapper">
+
+		<div id="header">
+				
+				<h1><a href="/">{{ site.title }}</a></h1>
+				
+				<h2>{{ site.subtitle }}</h2>
+
+				<ul id="nav">
+						{% for page in site.page_sections %}<li>{{ page | link_to_section }}</li>{% endfor %}
+				</ul>
+		</div>
+		
+		<div id="sidebar">
+		
+				<h2>Stuff</h2>
+				<ul>
+					{% for category in site.blog_sections %}<li>{{ category | link_to_section  }}</li>{% endfor %}
+				</ul>
+				<h2>Latest Stuff</h2>
+				<ul>
+					{% for latestarticle in site.latest_articles limit: 5 %}<li>{{ latestarticle | link_to_article}}</li>{% endfor %}
+				</ul>
+
+				<br>
+				
+				<h3>Search</h3>
+				<form method="get" id="sform" action="/search">
+				<input type="text" id="q" name="q" size="15" />
+				</form>
+
+				<h2>Other Stuff</h2>
+				<ul>
+					<li><a href="http://austinauts.com/">Photo Gallery</a></li>
+					<li><a href="http://thekuglins.com/">The Kuglins Web Site</a></li>
+					<li><a href="http://austinhumanesociety.org/">Austin Humane Society</a></li>
+					<li><a href="http://www.io.com/~sjohn/sour.htm/">Sourdough Starter</a></li>
+					<li><a href="http://www.fiveruns.com/">FiveRuns</a></li>
+					<li><a href="http://allrecipes.com/">AllRecipes.com</a></li>
+				</ul>
+
+		</div>
+		<div id="contentnorightbar">
+			{{ content_for_layout }}
+		</div>
+	<div id="footer">
+		
+								<!-- Please leave this line intact -->
+								<p style="text-align:center;">All content © 2000—2009 by Mark Reynolds
+								<!-- you can delete below here -->
+		
+		</div>
+		
+</div>
+</div>
+
+
+</body>
+</html>
